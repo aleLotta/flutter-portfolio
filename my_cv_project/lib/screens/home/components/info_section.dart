@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_cv_project/screens/about_screen.dart';
+import 'package:my_cv_project/screens/home/components/about_screen.dart';
 
 import '../../../constants.dart';
 
