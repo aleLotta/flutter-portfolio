@@ -15,65 +15,14 @@ class SkillsScreen extends StatelessWidget {
       backgroundColor: bgColor,
       body: Column(
         children: [
-          Expanded(flex: 1, child: CodedName()),
+          CodedName(),
           Expanded(
             flex: 5,
             child: Row(
               children: [
                 Expanded(
                   flex: 2,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(defaultPadding),
-                        child: Text(
-                          "I'm a ...",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline6!
-                              .copyWith(color: primaryColor),
-                        ),
-                      ),
-                      SizedBox(
-                        height: defaultPadding,
-                      ),
-                      Expanded(
-                        flex: 4,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              SkillBanner(
-                                title: "Flutter Programmer",
-                                description:
-                                    "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
-                              ),
-                              SizedBox(
-                                height: defaultPadding,
-                              ),
-                              SkillBanner(
-                                  title: "Web Developer",
-                                  description:
-                                      "I have some knowledge in Web Applications, with HTML and CSS languages."),
-                              SizedBox(
-                                height: defaultPadding,
-                              ),
-                              SkillBanner(
-                                  title: "Mobile Developer",
-                                  description:
-                                      "I can build some basic/medium level apps with a minimal and elegant design."),
-                              SizedBox(
-                                height: defaultPadding,
-                              ),
-                              SkillBanner(
-                                  title: "Database Programmer",
-                                  description:
-                                      "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  child: Knowledges(),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 50),
@@ -81,54 +30,122 @@ class SkillsScreen extends StatelessWidget {
                     color: primaryColor,
                   ),
                 ),
-                Expanded(
-                    flex: 2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CircularSkillIndicator(
-                              label: "Dart",
-                              value: 0.5,
-                            ),
-                            CircularSkillIndicator(label: "Python", value: 0.6),
-                          ],
-                        ),
-                        SizedBox(
-                          height: defaultPadding,
-                        ),
-                        Center(
-                          child: Text(
-                            "Skills",
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: primaryColor),
-                          ),
-                        ),
-                        SizedBox(
-                          height: defaultPadding,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CircularSkillIndicator(label: "SQL", value: 0.6),
-                            CircularSkillIndicator(label: "Java", value: 0.7),
-                          ],
-                        ),
-                      ],
-                    )),
+                Expanded(flex: 2, child: SkillsSection()),
               ],
             ),
           ),
-          Expanded(
-            child: NavigationBanner(),
-            flex: 1,
-          )
+          NavigationBanner(),
         ],
       ),
+    );
+  }
+}
+
+class SkillsSection extends StatelessWidget {
+  const SkillsSection({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CircularSkillIndicator(
+              label: "Dart",
+              value: 0.5,
+            ),
+            CircularSkillIndicator(label: "Python", value: 0.6),
+          ],
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        Center(
+          child: Text(
+            "Skills",
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: primaryColor),
+          ),
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            CircularSkillIndicator(label: "SQL", value: 0.6),
+            CircularSkillIndicator(label: "Java", value: 0.7),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class Knowledges extends StatelessWidget {
+  const Knowledges({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(defaultPadding),
+          child: Text(
+            "I'm a ...",
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: primaryColor),
+          ),
+        ),
+        SizedBox(
+          height: defaultPadding,
+        ),
+        Expanded(
+          flex: 4,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SkillBanner(
+                  title: "Flutter Programmer",
+                  description:
+                      "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
+                ),
+                SizedBox(
+                  height: defaultPadding,
+                ),
+                SkillBanner(
+                    title: "Web Developer",
+                    description:
+                        "I have some knowledge in Web Applications, with HTML and CSS languages."),
+                SizedBox(
+                  height: defaultPadding,
+                ),
+                SkillBanner(
+                    title: "Mobile Developer",
+                    description:
+                        "I can build some basic/medium level apps with a minimal and elegant design."),
+                SizedBox(
+                  height: defaultPadding,
+                ),
+                SkillBanner(
+                    title: "Database Programmer",
+                    description:
+                        "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -196,12 +213,17 @@ class SkillBanner extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle1!
-                  .copyWith(fontWeight: FontWeight.bold),
+            Row(
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                //Icon(),
+              ],
             ),
             SizedBox(height: defaultPadding / 5),
             Text(
