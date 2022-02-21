@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
 
@@ -31,6 +32,29 @@ class CodedName extends StatelessWidget {
               width: defaultPadding / 2,
             ),
           ]),
+          Padding(
+            padding: const EdgeInsets.only(right: defaultPadding),
+            child: FittedBox(
+              child: Row(
+                children: [
+                  TextButton(
+                    child: Text(
+                      "DOWNLOAD CV",
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyText1!.color),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    width: defaultPadding / 2,
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset("assets/icons/download.svg"))
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
