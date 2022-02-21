@@ -19,85 +19,88 @@ class WorksScreen extends StatelessWidget {
           CodedName(),
           Expanded(
             flex: 4,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Still working on my first projects",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline6!
-                          .copyWith(color: primaryColor),
-                    ),
-                    Container(
-                      width: 50,
-                      child: AnimatedTextKit(
-                        animatedTexts: [
-                          TyperAnimatedText(
-                            "",
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: primaryColor),
-                          ),
-                          TyperAnimatedText(
-                            ".",
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: primaryColor),
-                          ),
-                          TyperAnimatedText(
-                            "..",
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: primaryColor),
-                          ),
-                          TyperAnimatedText(
-                            "...",
-                            textStyle: Theme.of(context)
-                                .textTheme
-                                .headline6!
-                                .copyWith(color: primaryColor),
-                          )
-                        ],
-                        totalRepeatCount: 4,
-                        pause: Duration(milliseconds: 500),
+            child: Container(
+              color: secondaryColor,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Still working on my first projects",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline6!
+                            .copyWith(color: primaryColor),
                       ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: defaultPadding * 2,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "If you have any, please contact me :)",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      width: defaultPadding / 2,
-                    ),
-                    /*Container(
-                      width: 50,
-                      height: 50,
-                      child: AnimatedTextKit(animatedTexts: [
-                        FlickerAnimatedText(":)",
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold))
-                      ]),
-                    )*/
-                  ],
-                ),
-              ],
+                      Container(
+                        width: 50,
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            TyperAnimatedText(
+                              "",
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: primaryColor),
+                            ),
+                            TyperAnimatedText(
+                              ".",
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: primaryColor),
+                            ),
+                            TyperAnimatedText(
+                              "..",
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: primaryColor),
+                            ),
+                            TyperAnimatedText(
+                              "...",
+                              textStyle: Theme.of(context)
+                                  .textTheme
+                                  .headline6!
+                                  .copyWith(color: primaryColor),
+                            )
+                          ],
+                          totalRepeatCount: 4,
+                          pause: Duration(milliseconds: 500),
+                        ),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: defaultPadding * 2,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "If you have any, please contact me :)",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        width: defaultPadding / 2,
+                      ),
+                      /*Container(
+                        width: 50,
+                        height: 50,
+                        child: AnimatedTextKit(animatedTexts: [
+                          FlickerAnimatedText(":)",
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold))
+                        ]),
+                      )*/
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           NavigationBanner(),

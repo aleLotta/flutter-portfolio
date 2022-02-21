@@ -31,13 +31,6 @@ class CodedName extends StatelessWidget {
               width: defaultPadding / 2,
             ),
           ]),
-          Padding(
-            padding: EdgeInsets.only(right: defaultPadding),
-            child: TextButton(
-              onPressed: () {},
-              child: const Text("light mode"),
-            ),
-          ),
         ],
       ),
     );

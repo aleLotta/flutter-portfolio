@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_cv_project/components/coded_name.dart';
 import 'package:my_cv_project/components/navigation_banner.dart';
 import 'package:my_cv_project/constants.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:my_cv_project/screens/contacts/contact_screen.dart';
 import 'package:my_cv_project/screens/home/home_screen.dart';
 import 'package:my_cv_project/screens/skills/skills_screen.dart';
 import 'package:my_cv_project/screens/works/work_screen.dart';
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
                 bodyText2: TextStyle(color: bodyTextColor),
               ),
         ),
-        home: WorksScreen() //SkillsScreen(), //HomeScreen(),
+        home: ContactsScreen() //WorksScreen() //SkillsScreen(), //HomeScreen(),
         );
   }
 }
