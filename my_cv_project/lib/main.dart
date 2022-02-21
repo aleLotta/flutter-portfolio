@@ -19,20 +19,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "My Portfolio",
-        theme: ThemeData.dark().copyWith(
-          primaryColor: primaryColor,
-          scaffoldBackgroundColor: bgColor,
-          canvasColor: bgColor,
-          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-              .apply(bodyColor: Colors.white)
-              .copyWith(
-                bodyText1: TextStyle(color: bodyTextColor),
-                bodyText2: TextStyle(color: bodyTextColor),
-              ),
-        ),
-        home: ContactsScreen() //WorksScreen() //SkillsScreen(), //HomeScreen(),
-        );
+      debugShowCheckedModeBanner: false,
+      title: "My Portfolio",
+      theme: ThemeData.dark().copyWith(
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: bgColor,
+        canvasColor: bgColor,
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+            .apply(bodyColor: Colors.white)
+            .copyWith(
+              bodyText1: TextStyle(color: bodyTextColor),
+              bodyText2: TextStyle(color: bodyTextColor),
+            ),
+      ),
+      home:
+          const HomeScreen(), //WorksScreen() //SkillsScreen(),  ContactsScreen()
+    );
   }
 }

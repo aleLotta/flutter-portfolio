@@ -18,7 +18,7 @@ class ContactsScreen extends StatelessWidget {
         children: [
           CodedName(),
           Expanded(
-              flex: 4,
+              flex: 6,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

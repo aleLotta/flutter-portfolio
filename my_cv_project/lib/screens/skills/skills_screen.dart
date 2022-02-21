@@ -17,7 +17,7 @@ class SkillsScreen extends StatelessWidget {
         children: [
           CodedName(),
           Expanded(
-            flex: 5,
+            flex: 6,
             child: Row(
               children: [
                 Expanded(
