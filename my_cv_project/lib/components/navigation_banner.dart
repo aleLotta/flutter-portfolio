@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:my_cv_project/constants.dart';
 import 'package:my_cv_project/screens/contacts/contact_screen.dart';
 import 'package:my_cv_project/screens/home/home_screen.dart';
 import 'package:my_cv_project/screens/skills/skills_screen.dart';
@@ -15,24 +16,35 @@ class NavigationBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 2,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
         children: [
-          NavigationIcons(
-            label: "Home",
-            screen: HomeScreen(),
+          SizedBox(
+            height: defaultPadding * 2,
           ),
-          NavigationIcons(
-            label: "Skills",
-            screen: SkillsScreen(),
+          Divider(),
+          SizedBox(
+            height: defaultPadding,
           ),
-          NavigationIcons(
-            label: "Works",
-            screen: WorksScreen(),
-          ),
-          NavigationIcons(
-            label: "Contacts",
-            screen: ContactsScreen(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              NavigationIcons(
+                label: "Home",
+                screen: HomeScreen(),
+              ),
+              NavigationIcons(
+                label: "Skills",
+                screen: SkillsScreen(),
+              ),
+              NavigationIcons(
+                label: "Works",
+                screen: WorksScreen(),
+              ),
+              NavigationIcons(
+                label: "Contacts",
+                screen: ContactsScreen(),
+              ),
+            ],
           ),
         ],
       ),
