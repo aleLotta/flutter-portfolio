@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_project/components/coded_name.dart';
 import 'package:my_cv_project/components/navigation_banner.dart';
+import 'package:my_cv_project/responsive.dart';
 import 'package:my_cv_project/screens/skills/knowledges.dart';
 import 'package:my_cv_project/screens/skills/skills_section.dart';
 
@@ -32,7 +33,8 @@ class SkillsScreen extends StatelessWidget {
                     color: primaryColor,
                   ),
                 ),
-                Expanded(flex: 2, child: SkillsSection()),
+                if (Responsive.isDesktop(context))
+                  Expanded(flex: 2, child: SkillsSection()),
               ],
             ),
           ),

@@ -99,7 +99,7 @@ class IconLinks extends StatelessWidget {
         color: bodyTextColor,
       ),
       onPressed: () {
-        launch(urlString);
+        //launch(urlString);
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_cv_project/responsive.dart';
 
 import '../../constants.dart';
 
@@ -27,42 +28,81 @@ class Knowledges extends StatelessWidget {
         ),
         Expanded(
           flex: 4,
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SkillBanner(
-                  title: "Flutter Programmer",
-                  icon: "icons/flutter_icon.svg",
-                  description:
-                      "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
+          child: Responsive.isDesktop(context)
+              ? SingleChildScrollView(
+                  child: Column(
+                  children: [
+                    SkillBanner(
+                      title: "Flutter Programmer",
+                      icon: "icons/flutter_icon.svg",
+                      description:
+                          "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
+                    ),
+                    SizedBox(
+                      height: defaultPadding,
+                    ),
+                    SkillBanner(
+                        title: "Web Developer",
+                        icon: "icons/html5.svg",
+                        description:
+                            "I have some knowledge in Web Applications, with HTML and CSS languages."),
+                    SizedBox(
+                      height: defaultPadding,
+                    ),
+                    SkillBanner(
+                        title: "Mobile Developer",
+                        icon: "icons/smartphone_tablet.svg",
+                        description:
+                            "I can build some basic/medium level apps with a minimal and elegant design."),
+                    SizedBox(
+                      height: defaultPadding,
+                    ),
+                    SkillBanner(
+                        title: "Database Programmer",
+                        icon: "icons/sql_db.svg",
+                        description:
+                            "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
+                  ],
+                ))
+              : Scrollbar(
+                  showTrackOnHover: true,
+                  thickness: 5,
+                  radius: null,
+                  //interactive: true,
+                  child: SingleChildScrollView(
+                    controller: ScrollController(),
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: defaultPadding),
+                          child: SkillBanner(
+                            title: "Flutter Programmer",
+                            icon: "assets/icons/flutter_icon.svg",
+                            description:
+                                "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
+                          ),
+                        ),
+                        SkillBanner(
+                            title: "Web Developer",
+                            icon: "assets/icons/html5.svg",
+                            description:
+                                "I have some knowledge in Web Applications, with HTML and CSS languages."),
+                        SkillBanner(
+                            title: "Mobile Developer",
+                            icon: "assets/icons/smartphone_tablet.svg",
+                            description:
+                                "I can build some basic/medium level apps with a minimal and elegant design."),
+                        SkillBanner(
+                            title: "Database Programmer",
+                            icon: "assets/icons/sql_db.svg",
+                            description:
+                                "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
+                      ],
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  height: defaultPadding,
-                ),
-                SkillBanner(
-                    title: "Web Developer",
-                    icon: "icons/html5.svg",
-                    description:
-                        "I have some knowledge in Web Applications, with HTML and CSS languages."),
-                SizedBox(
-                  height: defaultPadding,
-                ),
-                SkillBanner(
-                    title: "Mobile Developer",
-                    icon: "icons/smartphone_tablet.svg",
-                    description:
-                        "I can build some basic/medium level apps with a minimal and elegant design."),
-                SizedBox(
-                  height: defaultPadding,
-                ),
-                SkillBanner(
-                    title: "Database Programmer",
-                    icon: "icons/sql_db.svg",
-                    description:
-                        "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
-              ],
-            ),
-          ),
         ),
       ],
     );
@@ -85,7 +125,7 @@ class SkillBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: secondaryColor,
-      width: 420,
+      width: Responsive.isDesktop(context) ? 420 : 315,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

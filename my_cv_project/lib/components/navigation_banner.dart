@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:my_cv_project/constants.dart';
+import 'package:my_cv_project/responsive.dart';
 import 'package:my_cv_project/screens/contacts/contact_screen.dart';
 import 'package:my_cv_project/screens/home/home_screen.dart';
 import 'package:my_cv_project/screens/skills/skills_screen.dart';
@@ -21,31 +20,65 @@ class NavigationBanner extends StatelessWidget {
           SizedBox(
             height: defaultPadding * 2,
           ),
-          Divider(),
-          SizedBox(
-            height: defaultPadding,
+          Divider(
+            color: Colors.white,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              NavigationIcons(
-                label: "Home",
-                screen: HomeScreen(),
-              ),
-              NavigationIcons(
-                label: "Skills",
-                screen: SkillsScreen(),
-              ),
-              NavigationIcons(
-                label: "Works",
-                screen: WorksScreen(),
-              ),
-              NavigationIcons(
-                label: "Contacts",
-                screen: ContactsScreen(),
-              ),
-            ],
-          ),
+          if (!Responsive.isMobile(context))
+            SizedBox(
+              height: defaultPadding,
+            ),
+          if (!Responsive.isMobile(context))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                NavigationIcons(
+                  label: "Home",
+                  screen: HomeScreen(),
+                ),
+                NavigationIcons(
+                  label: "Skills",
+                  screen: SkillsScreen(),
+                ),
+                NavigationIcons(
+                  label: "Works",
+                  screen: WorksScreen(),
+                ),
+                NavigationIcons(
+                  label: "Contacts",
+                  screen: ContactsScreen(),
+                ),
+              ],
+            ),
+          if (Responsive.isMobile(context))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    NavigationIcons(
+                      label: "Home",
+                      screen: HomeScreen(),
+                    ),
+                    NavigationIcons(
+                      label: "Skills",
+                      screen: SkillsScreen(),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    NavigationIcons(
+                      label: "Works",
+                      screen: WorksScreen(),
+                    ),
+                    NavigationIcons(
+                      label: "Contacts",
+                      screen: ContactsScreen(),
+                    ),
+                  ],
+                ),
+              ],
+            )
         ],
       ),
     );
@@ -65,16 +98,15 @@ class NavigationIcons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: Responsive.isDesktop(context)
+          ? const EdgeInsets.symmetric(horizontal: 50)
+          : const EdgeInsets.symmetric(horizontal: 30),
       child: TextButton(
           onPressed: () {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => screen));
           },
-          child: Text(
-            label,
-            style: Theme.of(context).textTheme.subtitle1,
-          )),
+          child: Text(label, style: Theme.of(context).textTheme.subtitle1)),
     );
   }
 }
