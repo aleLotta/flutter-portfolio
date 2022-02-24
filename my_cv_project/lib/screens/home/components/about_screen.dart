@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_cv_project/constants.dart';
+import 'package:my_cv_project/responsive.dart';
 
 class About extends StatelessWidget {
   const About({
@@ -11,7 +12,9 @@ class About extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: defaultPadding * 3),
+          padding: !Responsive.isMobile(context)
+              ? const EdgeInsets.only(top: defaultPadding * 3)
+              : const EdgeInsets.only(top: defaultPadding),
           child: Text(
             "About",
             style: Theme.of(context)
@@ -39,8 +42,11 @@ class About extends StatelessWidget {
         SizedBox(
           height: defaultPadding / 2,
         ),
-        Text(
-          "I love to work in group projects and I'm really interested in learning up to date new skills",
+        Padding(
+          padding: const EdgeInsets.all(defaultPadding),
+          child: Text(
+            "I love to work in group projects and I'm really interested in learning up to date new skills",
+          ),
         )
       ],
     );

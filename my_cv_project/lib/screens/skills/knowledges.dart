@@ -14,7 +14,9 @@ class Knowledges extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(defaultPadding),
+          padding: Responsive.isDesktop(context)
+              ? const EdgeInsets.all(defaultPadding)
+              : const EdgeInsets.all(0.5),
           child: Text(
             "I'm a ...",
             style: Theme.of(context)
@@ -84,21 +86,30 @@ class Knowledges extends StatelessWidget {
                                 "I'm a self taught Web/Mobile developer using Dart language, still trying to learn new things to make my works flawless.",
                           ),
                         ),
-                        SkillBanner(
-                            title: "Web Developer",
-                            icon: "assets/icons/html5.svg",
-                            description:
-                                "I have some knowledge in Web Applications, with HTML and CSS languages."),
-                        SkillBanner(
-                            title: "Mobile Developer",
-                            icon: "assets/icons/smartphone_tablet.svg",
-                            description:
-                                "I can build some basic/medium level apps with a minimal and elegant design."),
-                        SkillBanner(
-                            title: "Database Programmer",
-                            icon: "assets/icons/sql_db.svg",
-                            description:
-                                "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
+                        Padding(
+                          padding: const EdgeInsets.only(right: defaultPadding),
+                          child: SkillBanner(
+                              title: "Web Developer",
+                              icon: "assets/icons/html5.svg",
+                              description:
+                                  "I have some knowledge in Web Applications, with HTML and CSS languages."),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: defaultPadding),
+                          child: SkillBanner(
+                              title: "Mobile Developer",
+                              icon: "assets/icons/smartphone_tablet.svg",
+                              description:
+                                  "I can build some basic/medium level apps with a minimal and elegant design."),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: defaultPadding),
+                          child: SkillBanner(
+                              title: "Database Programmer",
+                              icon: "assets/icons/sql_db.svg",
+                              description:
+                                  "I can create basic database managment systems (DBMS) using PostgreSQL and Java."),
+                        ),
                       ],
                     ),
                   ),
@@ -136,25 +147,45 @@ class SkillBanner extends StatelessWidget {
                 SvgPicture.asset(
                   icon,
                   color: Colors.white,
-                  height: 20,
+                  height: 40,
+                  width: 40,
                 ),
                 SizedBox(
                   width: 5,
                 ),
-                Text(
-                  title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
+                if (Responsive.isDesktop(context))
+                  Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(fontWeight: FontWeight.bold),
+                  ),
+                if (!Responsive.isDesktop(context))
+                  Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .subtitle1!
+                        .copyWith(fontWeight: FontWeight.bold, fontSize: 19),
+                  ),
               ],
             ),
             SizedBox(height: defaultPadding / 5),
-            Text(
-              description,
-              style: TextStyle(color: bodyTextColor),
-            )
+            if (Responsive.isDesktop(context))
+              Text(
+                description,
+                style: TextStyle(color: bodyTextColor),
+              ),
+            if (!Responsive.isDesktop(context))
+              Text(
+                description,
+                style: TextStyle(
+                  color: bodyTextColor,
+                  fontSize: 16,
+                  height: 1.75,
+                ),
+              ),
           ],
         ),
       ),

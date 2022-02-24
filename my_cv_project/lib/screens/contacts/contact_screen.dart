@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_cv_project/components/coded_name.dart';
 import 'package:my_cv_project/components/navigation_banner.dart';
+import 'package:my_cv_project/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../constants.dart';
@@ -27,49 +28,49 @@ class ContactsScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: defaultPadding),
                       child: Text(
-                        "You can contact me for rojects, working positions, or collaborations with the following links",
+                        "You can contact me for projects, working positions, or collaborations with the following links",
                         style: Theme.of(context)
                             .textTheme
                             .headline6!
-                            .copyWith(color: primaryColor),
+                            .copyWith(color: primaryColor, fontSize: 18),
                       ),
                     ),
-                    SizedBox(
-                      height: defaultPadding / 2,
-                    ),
-                    Container(
-                      width: 400,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconLinks(
-                            iconPath: "icons/github.svg",
-                            urlString: "",
-                          ),
-                          SizedBox(
-                            width: defaultPadding,
-                          ),
-                          IconLinks(
-                            iconPath: "icons/gmail.svg",
-                            urlString:
-                                "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
-                          ),
-                          SizedBox(
-                            width: defaultPadding,
-                          ),
-                          IconLinks(
-                            iconPath: "icons/twitter.svg",
-                            urlString: "",
-                          ),
-                          SizedBox(
-                            width: defaultPadding,
-                          ),
-                          IconLinks(
-                            iconPath: "icons/linkedin.svg",
-                            urlString: "",
-                          ),
-                        ],
+                    if (Responsive.isDesktop(context))
+                      SizedBox(
+                        height: defaultPadding / 2,
                       ),
+                    Row(
+                      mainAxisAlignment: Responsive.isDesktop(context)
+                          ? MainAxisAlignment.spaceEvenly
+                          : MainAxisAlignment.center,
+                      children: [
+                        IconLinks(
+                          iconPath: "assets/icons/github.svg",
+                          urlString: "",
+                        ),
+                        SizedBox(
+                          width: defaultPadding,
+                        ),
+                        IconLinks(
+                          iconPath: "assets/icons/gmail.svg",
+                          urlString:
+                              "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox",
+                        ),
+                        SizedBox(
+                          width: defaultPadding,
+                        ),
+                        IconLinks(
+                          iconPath: "assets/icons/twitter.svg",
+                          urlString: "",
+                        ),
+                        SizedBox(
+                          width: defaultPadding,
+                        ),
+                        IconLinks(
+                          iconPath: "assets/icons/linkedin.svg",
+                          urlString: "",
+                        ),
+                      ],
                     )
                   ])),
           NavigationBanner(),
