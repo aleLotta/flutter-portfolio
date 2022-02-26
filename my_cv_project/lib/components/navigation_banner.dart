@@ -15,73 +15,70 @@ class NavigationBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: darkColor,
-      child: Container(
-        child: Column(
-          children: [
+      child: Column(
+        children: [
+          Divider(
+            color: Colors.white,
+            height: 0,
+          ),
+          if (!Responsive.isMobile(context))
             SizedBox(
-              height: Responsive.isMobile(context) ? 8 : defaultPadding * 2,
+              height: defaultPadding / 2,
             ),
-            Divider(
-              color: Colors.white,
+          if (!Responsive.isMobile(context))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                NavigationText(
+                  label: "Home",
+                  screen: HomeScreen(),
+                ),
+                NavigationText(
+                  label: "Skills",
+                  screen: SkillsScreen(),
+                ),
+                NavigationText(
+                  label: "Works",
+                  screen: WorksScreen(),
+                ),
+                NavigationText(
+                  label: "Contacts",
+                  screen: ContactsScreen(),
+                ),
+              ],
             ),
-            if (!Responsive.isMobile(context))
-              SizedBox(
-                height: defaultPadding,
-              ),
-            if (!Responsive.isMobile(context))
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  NavigationText(
-                    label: "Home",
-                    screen: HomeScreen(),
-                  ),
-                  NavigationText(
-                    label: "Skills",
-                    screen: SkillsScreen(),
-                  ),
-                  NavigationText(
-                    label: "Works",
-                    screen: WorksScreen(),
-                  ),
-                  NavigationText(
-                    label: "Contacts",
-                    screen: ContactsScreen(),
-                  ),
-                ],
-              ),
-            if (Responsive.isMobile(context))
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      NavigationText(
-                        label: "Home",
-                        screen: HomeScreen(),
-                      ),
-                      NavigationText(
-                        label: "Skills",
-                        screen: SkillsScreen(),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      NavigationText(
-                        label: "Works",
-                        screen: WorksScreen(),
-                      ),
-                      NavigationText(
-                        label: "Contacts",
-                        screen: ContactsScreen(),
-                      ),
-                    ],
-                  ),
-                ],
-              )
-          ],
-        ),
+          if (!Responsive.isMobile(context)) SizedBox(height: defaultPadding),
+          if (Responsive.isMobile(context))
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    NavigationText(
+                      label: "Home",
+                      screen: HomeScreen(),
+                    ),
+                    NavigationText(
+                      label: "Skills",
+                      screen: SkillsScreen(),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    NavigationText(
+                      label: "Works",
+                      screen: WorksScreen(),
+                    ),
+                    NavigationText(
+                      label: "Contacts",
+                      screen: ContactsScreen(),
+                    ),
+                  ],
+                ),
+              ],
+            )
+        ],
       ),
     );
   }

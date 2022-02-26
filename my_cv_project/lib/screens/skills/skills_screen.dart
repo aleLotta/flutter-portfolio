@@ -31,7 +31,7 @@ class SkillsScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 50),
                           child: VerticalDivider(
-                            color: primaryColor,
+                            color: alternativeColor,
                           ),
                         ),
                         Expanded(flex: 2, child: SkillsSection()),
@@ -46,9 +46,8 @@ class SkillsScreen extends StatelessWidget {
                 Expanded(
                   flex: 6,
                   child: Container(
-                    height: 800,
                     child: ListView(children: [
-                      Container(height: 315, child: Knowledges()),
+                      Container(height: 250, child: Knowledges()),
                       Container(height: 400, child: SkillsSection())
                     ]),
                   ),

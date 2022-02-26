@@ -134,59 +134,64 @@ class SkillBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: secondaryColor,
-      width: Responsive.isDesktop(context) ? 420 : 315,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(
-                  icon,
-                  color: Colors.white,
-                  height: 40,
-                  width: 40,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                if (Responsive.isDesktop(context))
-                  Text(
-                    title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle1!
-                        .copyWith(fontWeight: FontWeight.bold),
+    return FittedBox(
+      child: Container(
+        color: secondaryColor,
+        width: Responsive.isDesktop(context) ? 420 : 315,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    icon,
+                    color: Colors.white,
+                    height: 40,
+                    width: 40,
                   ),
-                if (!Responsive.isDesktop(context))
-                  Text(
-                    title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle1!
-                        .copyWith(fontWeight: FontWeight.bold, fontSize: 19),
+                  SizedBox(
+                    width: 5,
                   ),
-              ],
-            ),
-            SizedBox(height: defaultPadding / 5),
-            if (Responsive.isDesktop(context))
-              Text(
-                description,
-                style: TextStyle(color: bodyTextColor),
+                  if (Responsive.isDesktop(context))
+                    Text(
+                      title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  if (!Responsive.isDesktop(context))
+                    Text(
+                      title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .subtitle1!
+                          .copyWith(fontWeight: FontWeight.bold, fontSize: 19),
+                    ),
+                ],
               ),
-            if (!Responsive.isDesktop(context))
-              Text(
-                description,
-                style: TextStyle(
-                  color: bodyTextColor,
-                  fontSize: 16,
-                  height: 1.75,
+              SizedBox(height: defaultPadding / 5),
+              if (Responsive.isDesktop(context))
+                Text(
+                  description,
+                  style: TextStyle(color: bodyTextColor),
                 ),
+              SizedBox(
+                height: defaultPadding,
               ),
-          ],
+              if (!Responsive.isDesktop(context))
+                Text(
+                  description,
+                  style: TextStyle(
+                    color: bodyTextColor,
+                    fontSize: 16,
+                    height: 1.75,
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

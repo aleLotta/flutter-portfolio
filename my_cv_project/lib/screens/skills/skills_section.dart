@@ -71,7 +71,7 @@ class CircularSkillIndicator extends StatelessWidget {
             children: [
               CircularProgressIndicator(
                 value: value,
-                color: primaryColor,
+                color: alternativeColor,
               ),
               Center(
                 child: Text(

@@ -35,13 +35,9 @@ class ContactsScreen extends StatelessWidget {
                             .copyWith(color: primaryColor, fontSize: 18),
                       ),
                     ),
-                    if (Responsive.isDesktop(context))
-                      SizedBox(
-                        height: defaultPadding / 2,
-                      ),
                     Row(
                       mainAxisAlignment: Responsive.isDesktop(context)
-                          ? MainAxisAlignment.spaceEvenly
+                          ? MainAxisAlignment.center
                           : MainAxisAlignment.center,
                       children: [
                         IconLinks(
