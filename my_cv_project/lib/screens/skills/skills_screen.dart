@@ -15,6 +15,19 @@ class SkillsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SafeArea(
+        child: Drawer(
+          elevation: 100,
+          backgroundColor: alternativeColor,
+          child: NavigationBanner(location: "Skills"),
+        ),
+      ),
+      appBar: Responsive.isDesktop(context)
+          ? null
+          : AppBar(
+              title: CodedName(),
+              backgroundColor: darkColor,
+            ),
       backgroundColor: bgColor,
       body: Responsive.isDesktop(context)
           ? Column(
@@ -37,12 +50,11 @@ class SkillsScreen extends StatelessWidget {
                         Expanded(flex: 2, child: SkillsSection()),
                       ],
                     )),
-                NavigationBanner(),
+                NavigationBanner(location: "Skills"),
               ],
             )
           : Column(
               children: [
-                CodedName(),
                 Expanded(
                   flex: 6,
                   child: Container(
@@ -52,7 +64,6 @@ class SkillsScreen extends StatelessWidget {
                     ]),
                   ),
                 ),
-                NavigationBanner(),
               ],
             ),
     );

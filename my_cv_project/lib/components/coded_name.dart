@@ -16,7 +16,7 @@ class CodedName extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(children: [
-            !Responsive.isMobile(context)
+            Responsive.isDesktop(context)
                 ? SizedBox(
                     width: 75,
                   )
@@ -38,34 +38,43 @@ class CodedName extends StatelessWidget {
           ]),
           Padding(
             padding: const EdgeInsets.only(right: defaultPadding),
-            child: FittedBox(
-              child: Row(
-                children: [
-                  TextButton(
-                    child: Text(
-                      "DOWNLOAD CV",
-                      style: Responsive.isDesktop(context)
-                          ? TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.bodyText1!.color)
-                          : TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.bodyText1!.color,
-                              fontSize: 10),
-                    ),
-                    onPressed: () {},
-                  ),
-                  if (!Responsive.isMobile(context))
-                    const SizedBox(
-                      width: defaultPadding / 2,
-                    ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset("assets/icons/download.svg"))
-                ],
-              ),
-            ),
+            child: Responsive.isDesktop(context) ? DownloadCV() : null,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class DownloadCV extends StatelessWidget {
+  const DownloadCV({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      child: Row(
+        children: [
+          TextButton(
+            child: Text(
+              "DOWNLOAD CV",
+              style: Responsive.isDesktop(context)
+                  ? TextStyle(
+                      color: Theme.of(context).textTheme.bodyText1!.color)
+                  : TextStyle(
+                      color: Theme.of(context).textTheme.bodyText1!.color,
+                      fontSize: 10),
+            ),
+            onPressed: () {},
+          ),
+          if (!Responsive.isMobile(context))
+            const SizedBox(
+              width: defaultPadding / 2,
+            ),
+          IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset("assets/icons/download.svg"))
         ],
       ),
     );

@@ -8,7 +8,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:my_cv_project/screens/contacts/contact_screen.dart';
 import 'package:my_cv_project/screens/home/home_screen.dart';
 import 'package:my_cv_project/screens/skills/skills_screen.dart';
-import 'package:my_cv_project/screens/works/work_screen.dart';
 
 void main() {
   runApp(MyApp());

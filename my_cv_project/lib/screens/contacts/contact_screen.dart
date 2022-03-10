@@ -15,10 +15,23 @@ class ContactsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SafeArea(
+        child: Drawer(
+          elevation: 100,
+          backgroundColor: alternativeColor,
+          child: NavigationBanner(location: "Contacts"),
+        ),
+      ),
+      appBar: Responsive.isDesktop(context)
+          ? null
+          : AppBar(
+              title: CodedName(),
+              backgroundColor: darkColor,
+            ),
       backgroundColor: bgColor,
       body: Column(
         children: [
-          CodedName(),
+          if (Responsive.isDesktop(context)) CodedName(),
           Expanded(
               flex: 6,
               child: Column(
@@ -27,12 +40,22 @@ class ContactsScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: defaultPadding),
-                      child: Text(
-                        "You can contact me for projects, working positions, or collaborations with the following links",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .copyWith(color: primaryColor, fontSize: 18),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Contact me",
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline3!
+                                .copyWith(
+                                    color: primaryColor, letterSpacing: 1),
+                          ),
+                          Text(
+                            "You can contact me for projects, working positions, or collaborations with the following links",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                        ],
                       ),
                     ),
                     Row(
@@ -69,7 +92,8 @@ class ContactsScreen extends StatelessWidget {
                       ],
                     )
                   ])),
-          NavigationBanner(),
+          if (Responsive.isDesktop(context))
+            NavigationBanner(location: "Contacts"),
         ],
       ),
     );

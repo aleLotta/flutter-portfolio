@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:my_cv_project/components/coded_name.dart';
 import 'package:my_cv_project/constants.dart';
 import 'package:my_cv_project/responsive.dart';
 import 'package:my_cv_project/screens/contacts/contact_screen.dart';
 import 'package:my_cv_project/screens/home/home_screen.dart';
+import 'package:my_cv_project/screens/projects/projects_screen.dart';
 import 'package:my_cv_project/screens/skills/skills_screen.dart';
-import 'package:my_cv_project/screens/works/work_screen.dart';
 
 class NavigationBanner extends StatelessWidget {
   const NavigationBanner({
     Key? key,
+    required this.location,
   }) : super(key: key);
+
+  final String location;
 
   @override
   Widget build(BuildContext context) {
@@ -21,61 +25,70 @@ class NavigationBanner extends StatelessWidget {
             color: Colors.white,
             height: 0,
           ),
-          if (!Responsive.isMobile(context))
+          if (Responsive.isDesktop(context))
             SizedBox(
               height: defaultPadding / 2,
             ),
-          if (!Responsive.isMobile(context))
+          if (Responsive.isDesktop(context))
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 NavigationText(
-                  label: "Home",
-                  screen: HomeScreen(),
-                ),
+                    label: "Home",
+                    screen: HomeScreen(),
+                    flag: location == "Home"),
                 NavigationText(
-                  label: "Skills",
-                  screen: SkillsScreen(),
-                ),
+                    label: "Skills",
+                    screen: SkillsScreen(),
+                    flag: location == "Skills"),
                 NavigationText(
-                  label: "Works",
-                  screen: WorksScreen(),
-                ),
+                    label: "Projects",
+                    screen: ProjectsScreen(),
+                    flag: location == "Projects"),
                 NavigationText(
-                  label: "Contacts",
-                  screen: ContactsScreen(),
-                ),
+                    label: "Contacts",
+                    screen: ContactsScreen(),
+                    flag: location == "Contacts"),
               ],
             ),
-          if (!Responsive.isMobile(context)) SizedBox(height: defaultPadding),
-          if (Responsive.isMobile(context))
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          if (Responsive.isDesktop(context)) SizedBox(height: defaultPadding),
+          if (!Responsive.isDesktop(context))
+            Column(
               children: [
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    NavigationText(
-                      label: "Home",
-                      screen: HomeScreen(),
+                    Column(
+                      children: [
+                        NavigationText(
+                          label: "Home",
+                          screen: HomeScreen(),
+                          flag: location == "Home",
+                        ),
+                        NavigationText(
+                            label: "Skills",
+                            screen: SkillsScreen(),
+                            flag: location == "Skills"),
+                      ],
                     ),
-                    NavigationText(
-                      label: "Skills",
-                      screen: SkillsScreen(),
+                    Column(
+                      children: [
+                        NavigationText(
+                            label: "Projects",
+                            screen: ProjectsScreen(),
+                            flag: location == "Projects"),
+                        NavigationText(
+                            label: "Contacts",
+                            screen: ContactsScreen(),
+                            flag: location == "Contacts"),
+                      ],
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    NavigationText(
-                      label: "Works",
-                      screen: WorksScreen(),
-                    ),
-                    NavigationText(
-                      label: "Contacts",
-                      screen: ContactsScreen(),
-                    ),
-                  ],
+                SizedBox(
+                  height: defaultPadding,
                 ),
+                DownloadCV(),
               ],
             )
         ],
@@ -89,10 +102,12 @@ class NavigationText extends StatelessWidget {
     Key? key,
     required this.label,
     required this.screen,
+    required this.flag,
   }) : super(key: key);
 
   final String label;
   final Widget screen;
+  final bool flag;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +120,13 @@ class NavigationText extends StatelessWidget {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => screen));
           },
-          child: Text(label, style: Theme.of(context).textTheme.subtitle1)),
+          child: Text(label,
+              style: flag == true
+                  ? Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: primaryColor)
+                  : Theme.of(context).textTheme.subtitle1)),
     );
   }
 }

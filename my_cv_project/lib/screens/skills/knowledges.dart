@@ -190,6 +190,9 @@ class SkillBanner extends StatelessWidget {
                     height: 1.75,
                   ),
                 ),
+              SizedBox(
+                height: defaultPadding,
+              )
             ],
           ),
         ),

@@ -4,24 +4,46 @@ import 'package:my_cv_project/components/coded_name.dart';
 import 'package:my_cv_project/components/navigation_banner.dart';
 
 import '../../constants.dart';
+import '../../responsive.dart';
 
-class WorksScreen extends StatelessWidget {
-  const WorksScreen({
+class ProjectsScreen extends StatelessWidget {
+  const ProjectsScreen({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SafeArea(
+        child: Drawer(
+          elevation: 100,
+          backgroundColor: alternativeColor,
+          child: NavigationBanner(location: "Projects"),
+        ),
+      ),
+      appBar: Responsive.isDesktop(context)
+          ? null
+          : AppBar(
+              title: CodedName(),
+              backgroundColor: darkColor,
+            ),
       backgroundColor: bgColor,
       body: Column(
         children: [
-          CodedName(),
+          if (Responsive.isDesktop(context)) CodedName(),
           Expanded(
             flex: 6,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(
+                  "?",
+                  style: TextStyle(
+                      color: primaryColor,
+                      fontSize: 150,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: defaultPadding),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -84,23 +106,13 @@ class WorksScreen extends StatelessWidget {
                     SizedBox(
                       width: defaultPadding / 2,
                     ),
-                    /*Container(
-                      width: 50,
-                      height: 50,
-                      child: AnimatedTextKit(animatedTexts: [
-                        FlickerAnimatedText(":)",
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold))
-                      ]),
-                    )*/
                   ],
                 ),
               ],
             ),
           ),
-          NavigationBanner(),
+          if (Responsive.isDesktop(context))
+            NavigationBanner(location: "Projects"),
         ],
       ),
     );

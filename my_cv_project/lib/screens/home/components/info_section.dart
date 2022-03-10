@@ -48,6 +48,14 @@ class MyInfo extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
+                        Text(
+                          "Freelance Developer / 22 years old / Italian",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: primaryColor,
+                              wordSpacing: 3,
+                              letterSpacing: 2),
+                        ),
                         Column(
                           children: [
                             About(),
@@ -97,7 +105,7 @@ class MyInfo extends StatelessWidget {
                   ),
                   Container(
                       child: CircleAvatar(
-                    radius: Responsive.isDesktop(context) ? 75 : 65,
+                    radius: 65,
                     backgroundColor: Colors.amberAccent,
                   )),
                   Column(
